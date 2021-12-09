@@ -1,0 +1,78 @@
+.folder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem;
+  position: relative;
+}
+
+.maincontainer {
+  width: 17rem;
+  height: 17rem;
+  margin: 2rem;
+  float: left;
+}
+
+.btn {
+  padding: 0;
+}
+
+.back h2 {
+  white-space: pre-line;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.front h2 {
+  padding: 1rem;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.maincontainer > .front {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #85a5ff;
+  position: absolute;
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  width: 17rem;
+  height: 17rem;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transition: transform 0.5s linear 0s;
+}
+
+.maincontainer > .back {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transform: perspective(600px) rotateY(180deg);
+  background: #fa8c16;
+  color: black;
+  width: 17rem;
+  height: 17rem;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transition: transform 0.5s linear 0s;
+  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.maincontainer:hover > .front {
+  transform: perspective(600px) rotateY(-180deg);
+}
+
+.maincontainer:hover > .back {
+  transform: perspective(600px) rotateY(0deg);
+}
