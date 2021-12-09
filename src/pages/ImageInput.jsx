@@ -21,10 +21,16 @@ const ImageInput = () => {
 
     file && getImage()
   }, [file])
+
+  const resetClick = () => {
+    setFile(null)
+    setImage(null)
+  }
+
   return (
     <div>
       {image ? (
-        <FaceDetect image={image} />
+        <FaceDetect image={image} reset={resetClick} />
       ) : (
         <div className="newPostCard">
           <div className="addPost">

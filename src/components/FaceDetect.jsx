@@ -4,7 +4,7 @@ import "./FaceDetect.css"
 import Button from "../components/Button"
 import { Row, Col } from "antd"
 
-const FaceDetect = ({ image }) => {
+const FaceDetect = ({ image, reset }) => {
   const { url, width, height } = image
   const imgRef = useRef()
   const canvasRef = useRef()
@@ -78,6 +78,10 @@ const FaceDetect = ({ image }) => {
     console.log("Click")
   }
 
+  const handleMaskClick = () => {
+    console.log("Mask)))")
+  }
+
   return (
     <Row justify="space-between" className="container">
       <Col xs={24} sm={24} md={16} lg={16} xl={16}>
@@ -89,19 +93,14 @@ const FaceDetect = ({ image }) => {
             alt=""
             style={{ width, height }}
           />
-          <canvas
-            // onMouseEnter={enter}
-            ref={canvasRef}
-            width={width}
-            height={height}
-          />
+          <canvas ref={canvasRef} width={width} height={height} />
         </div>
       </Col>
       <Col xs={24} sm={24} md={6} lg={6} xl={6}>
         <div className="right">
           <Button onClick={handleClick}>Detect</Button>
-          <Button>Сброс</Button>
-          <Button>Маска</Button>
+          <Button onClick={reset}> Сброс</Button>
+          <Button onClick={handleMaskClick}>Маска</Button>
         </div>
       </Col>
     </Row>
