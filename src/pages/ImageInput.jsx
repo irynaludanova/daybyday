@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react"
 import FaceDetect from "../components/FaceDetect"
-import "./ImageInput.css"
+import styled from "styled-components"
+import download from "../assets/images/download.webp"
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+`
 const ImageInput = () => {
   const [file, setFile] = useState()
   const [image, setImage] = useState()
@@ -32,26 +39,23 @@ const ImageInput = () => {
       {image ? (
         <FaceDetect image={image} reset={resetClick} />
       ) : (
-        <div className="newPostCard">
-          <div className="addPost">
-            <div className="postForm">
-              <label htmlFor="file">
-                Загрузи фото...
-                <img
-                  className="addImg"
-                  src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84451/preview.svg"
-                  alt=""
-                />
-              </label>
-              <input
-                onChange={(e) => setFile(e.target.files[0])}
-                id="file"
-                style={{ display: "none" }}
-                type="file"
-              />
-            </div>
-          </div>
-        </div>
+        <Container>
+          <img src={download} alt="download" />
+          <label htmlFor="file">
+            Загрузи фото...
+            <img
+              className="addImg"
+              src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84451/preview.svg"
+              alt=""
+            />
+          </label>
+          <input
+            onChange={(e) => setFile(e.target.files[0])}
+            id="file"
+            style={{ display: "none" }}
+            type="file"
+          />
+        </Container>
       )}
     </div>
   )

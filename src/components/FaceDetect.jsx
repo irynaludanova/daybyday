@@ -1,8 +1,28 @@
 import React, { useEffect, useRef } from "react"
 import * as faceapi from "face-api.js"
-import "./FaceDetect.css"
 import Button from "../components/Button"
 import { Row, Col } from "antd"
+import styled from "styled-components"
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+`
+const Left = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+`
+const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 10rem;
+`
 
 const FaceDetect = ({ image, reset }) => {
   const { url, width, height } = image
@@ -84,25 +104,32 @@ const FaceDetect = ({ image, reset }) => {
 
   return (
     <Row justify="space-between" className="container">
-      <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-        <div className="left" style={{ width, height }}>
-          <img
-            ref={imgRef}
-            crossOrigin="anonymous"
-            src={url}
-            alt=""
-            style={{ width, height }}
-          />
-          <canvas ref={canvasRef} width={width} height={height} />
-        </div>
-      </Col>
-      <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-        <div className="right">
-          <Button onClick={handleClick}>Detect</Button>
-          <Button onClick={reset}> Сброс</Button>
-          <Button onClick={handleMaskClick}>Маска</Button>
-        </div>
-      </Col>
+      <Container>
+        <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+          <Left style={{ width, height }}>
+            <img
+              ref={imgRef}
+              crossOrigin="anonymous"
+              src={url}
+              alt=""
+              style={{ width, height }}
+            />
+            <canvas
+              ref={canvasRef}
+              width={width}
+              height={height}
+              style={{ position: "absolute" }}
+            />
+          </Left>
+        </Col>
+        <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+          <Right>
+            <Button onClick={handleClick}>Detect</Button>
+            <Button onClick={reset}> Сброс</Button>
+            <Button onClick={handleMaskClick}>Маска</Button>
+          </Right>
+        </Col>
+      </Container>
     </Row>
   )
 }
