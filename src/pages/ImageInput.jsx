@@ -2,30 +2,34 @@ import React, { useEffect, useState } from "react"
 import FaceDetect from "../components/FaceDetect"
 import styled from "styled-components"
 import download from "../assets/images/download.webp"
-
+import Button from "../components/Button"
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: fit-content;
+  margin: 1rem;
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `
 const Label = styled.label`
   font-size: 2rem;
+  font-weight: 700;
   margin: 2rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `
 const Input = styled.input`
-  font-size: 1.5rem;
-  content: "Загрузи фото...";
+  display: none;
+`
+const Img = styled.img`
+  width: 30%;
   margin: 2rem;
-  cursor: pointer;
-
-  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
-
-  &:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  @media (max-width: 768px) {
+    width: 70%;
   }
 `
 
@@ -60,16 +64,17 @@ const ImageInput = () => {
         <FaceDetect image={image} reset={resetClick} />
       ) : (
         <Container>
-          <img src={download} alt="download" />
-
-          <Label htmlFor="file">
-            <Input
-              onChange={(e) => setFile(e.target.files[0])}
-              id="file"
-              type="file"
-            />
-            Загрузи фото...
-          </Label>
+          <Img src={download} alt="download" />
+          <Button>
+            <Label htmlFor="file">
+              <Input
+                onChange={(e) => setFile(e.target.files[0])}
+                id="file"
+                type="file"
+              />
+              Загрузи фото...
+            </Label>
+          </Button>
         </Container>
       )}
     </div>

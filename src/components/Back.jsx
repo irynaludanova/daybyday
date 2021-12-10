@@ -1,23 +1,27 @@
 import React from "react"
-import { TiArrowLeftThick } from "react-icons/ti"
-import { Link } from "react-router-dom"
+import back_arrow from "../assets/images/back_arrow.webp"
 import styled from "styled-components"
-const Container = styled.div`
-  display: flex;
+import { useNavigate } from "react-router-dom"
 
-  Container h2 {
-    color: yellow;
-  }
+const Img = styled.img`
+  width: 5rem;
+`
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
 `
 
 const Back = () => {
+  const navigate = useNavigate()
   return (
-    <Container>
-      <TiArrowLeftThick />
-      <h2>
-        <Link to="/menu">меню</Link>
-      </h2>
-    </Container>
+    <Button
+      onClick={() => {
+        navigate(-1)
+      }}
+    >
+      <Img src={back_arrow} alt="Back" />
+    </Button>
   )
 }
 

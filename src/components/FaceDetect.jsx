@@ -11,8 +11,8 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   @media (max-width: 768px) {
-   flex-direction:column;
-
+    flex-direction: column;
+  }
 `
 const Left = styled.div`
   display: flex;
@@ -37,17 +37,7 @@ const FaceDetect = ({ image, reset }) => {
   width = nwidth
   const nheight = +Math.round(height * scale * 0.7)
   height = nheight
-  console.log(
-    typeof nheight == typeof height,
-    "nheight:",
-    nheight,
-    "heigth:",
-    height,
-    "type height:",
-    typeof height,
-    "type nheight:",
-    typeof nheight
-  )
+
   const imgRef = useRef()
   const canvasRef = useRef()
 

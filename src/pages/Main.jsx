@@ -1,18 +1,28 @@
 import React from "react"
 import gif from "../assets/images/snowman.gif"
 import styled from "styled-components"
-import { useMediaQuery } from "react-responsive"
 import Button from "../components/Button"
 import { Row, Col } from "antd"
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 5rem;
+  padding-top: 10rem;
+  @media (max-width: 768px) {
+    padding-top: 1rem;
+    flex-direction: column;
+  }
+`
+const Img = styled.img`
+  margin: -2rem 5rem 0 2rem;
+  width: 100%;
+  @media (max-width: 768px) {
+    padding-top: 2rem;
+    width: 10rem;
+  }
 `
 
 const Main = () => {
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
   return (
     <>
       <Row justify="center">
@@ -37,15 +47,7 @@ const Main = () => {
             </Button>
           </Col>
           <Col span={12}>
-            {isMobile ? (
-              <></>
-            ) : (
-              <img
-                src={gif}
-                alt="Snowman"
-                style={{ margin: "-2rem 5rem 0 2rem", width: "100%" }}
-              />
-            )}
+            <Img src={gif} alt="Snowman" />
           </Col>
         </Container>
       </Row>
