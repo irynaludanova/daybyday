@@ -5,10 +5,30 @@ import download from "../assets/images/download.webp"
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 90vh;
 `
+const Label = styled.label`
+  font-size: 2rem;
+  margin: 2rem;
+`
+const Input = styled.input`
+  font-size: 1.5rem;
+  content: "Загрузи фото...";
+  margin: 2rem;
+  cursor: pointer;
+
+  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+
+  &:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+`
+
 const ImageInput = () => {
   const [file, setFile] = useState()
   const [image, setImage] = useState()
@@ -41,20 +61,15 @@ const ImageInput = () => {
       ) : (
         <Container>
           <img src={download} alt="download" />
-          <label htmlFor="file">
-            Загрузи фото...
-            <img
-              className="addImg"
-              src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84451/preview.svg"
-              alt=""
+
+          <Label htmlFor="file">
+            <Input
+              onChange={(e) => setFile(e.target.files[0])}
+              id="file"
+              type="file"
             />
-          </label>
-          <input
-            onChange={(e) => setFile(e.target.files[0])}
-            id="file"
-            style={{ display: "none" }}
-            type="file"
-          />
+            Загрузи фото...
+          </Label>
         </Container>
       )}
     </div>

@@ -5,16 +5,22 @@ import { Row, Col } from "antd"
 import styled from "styled-components"
 
 const Container = styled.div`
+  margin: 5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
+  @media (max-width: 768px) {
+   flex-direction:column;
+
 `
 const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  width: {width};
+  heigth: {heigth};
 `
 const Right = styled.div`
   display: flex;
@@ -25,7 +31,23 @@ const Right = styled.div`
 `
 
 const FaceDetect = ({ image, reset }) => {
-  const { url, width, height } = image
+  let { url, width, height } = image
+  const scale = window.innerWidth / width
+  const nwidth = +Math.round(width * scale * 0.7)
+  width = nwidth
+  const nheight = +Math.round(height * scale * 0.7)
+  height = nheight
+  console.log(
+    typeof nheight == typeof height,
+    "nheight:",
+    nheight,
+    "heigth:",
+    height,
+    "type height:",
+    typeof height,
+    "type nheight:",
+    typeof nheight
+  )
   const imgRef = useRef()
   const canvasRef = useRef()
 
@@ -98,15 +120,11 @@ const FaceDetect = ({ image, reset }) => {
     console.log("Click")
   }
 
-  const handleMaskClick = () => {
-    console.log("Mask)))")
-  }
-
   return (
     <Row justify="space-between" className="container">
       <Container>
         <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-          <Left style={{ width, height }}>
+          <Left>
             <img
               ref={imgRef}
               crossOrigin="anonymous"
@@ -126,7 +144,6 @@ const FaceDetect = ({ image, reset }) => {
           <Right>
             <Button onClick={handleClick}>Detect</Button>
             <Button onClick={reset}> Сброс</Button>
-            <Button onClick={handleMaskClick}>Маска</Button>
           </Right>
         </Col>
       </Container>
