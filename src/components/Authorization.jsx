@@ -39,7 +39,6 @@ const Authorization = ({ user }) => {
         <Auth>
           <Item>
             <Avatar src={user.photos[0].value} alt="avatar" />
-
             {user.displayName}
             <Button onClick={logout}>Выход</Button>
           </Item>

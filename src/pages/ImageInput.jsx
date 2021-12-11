@@ -26,7 +26,7 @@ const Input = styled.input`
   display: none;
 `
 const Img = styled.img`
-  width: 30%;
+  width: 20%;
   margin: 2rem;
   @media (max-width: 768px) {
     width: 70%;

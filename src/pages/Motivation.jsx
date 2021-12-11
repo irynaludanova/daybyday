@@ -24,7 +24,7 @@ const Motivation = () => {
     const randomNum = Math.floor(Math.random() * (max - min + 1)) + min
     return randomNum
   }
-  const randomItem = motivateStore[random(1, 4)]
+  const randomItem = motivateStore[random(0, motivateStore.length - 1)]
 
   const handleClick = () => {
     setItem(randomItem)

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useMediaQuery } from "react-responsive"
 import Logo from "./Logo"
 import "./CustomHeader.css"
@@ -6,8 +6,10 @@ import Back from "./Back"
 import Authorization from "./Authorization"
 import Toggle from "./Toggler"
 import { GiHamburgerMenu } from "react-icons/gi"
+import { AiOutlineClose } from "react-icons/ai"
 const CustomHeader = ({ theme, themeToggler, user }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
+  const [checked, setChecked] = useState(false)
   return (
     <>
       {isMobile ? (
@@ -18,14 +20,16 @@ const CustomHeader = ({ theme, themeToggler, user }) => {
               id="hamburger"
               type="checkbox"
               className="hamburgerCheckbox"
+              onClick={() => setChecked(!checked)}
             />
+
             <label
               htmlFor="hamburger"
               className="hamburgerLabel"
               role="button"
               aria-labelledby="menu"
             >
-              <GiHamburgerMenu />
+              {checked ? <AiOutlineClose /> : <GiHamburgerMenu />}
             </label>
 
             <nav role="navigation" className="sidebar">

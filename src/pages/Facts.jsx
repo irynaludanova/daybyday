@@ -25,7 +25,7 @@ const Facts = () => {
     const randomNum = Math.floor(Math.random() * (max - min + 1)) + min
     return randomNum
   }
-  const randomItem = factsStore[random(1, 19)]
+  const randomItem = factsStore[random(0, factsStore.length - 1)]
 
   const handleClick = () => {
     setItem(randomItem)
