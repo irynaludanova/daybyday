@@ -31,6 +31,9 @@ code {
 
 h1 {
   font-size: 2rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }
 h2 {
   font-size: 1.5rem;

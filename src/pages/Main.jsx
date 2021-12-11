@@ -7,7 +7,7 @@ import { Row, Col } from "antd"
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 10rem;
+  padding-top: 4rem;
   @media (max-width: 768px) {
     padding-top: 1rem;
     flex-direction: column;

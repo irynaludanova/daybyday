@@ -1,0 +1,74 @@
+.mobile,
+.deskHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.wrapper {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+.hamburgerCheckbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.hamburgerLabel {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.hamburgerCheckbox:checked ~ .hamburgerLabel:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+
+.content {
+  flex: 1;
+  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
+  transition: all 0.3s;
+  min-height: 100vh;
+}
+
+.sidebar {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  transition: all 0.3s;
+  display: flex;
+}
+
+.hamburgerCheckbox:checked ~ .sidebar {
+  width: auto;
+  min-height: 50vh;
+  padding-top: 2rem;
+}
+
+.menu {
+  height: fit-content;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu li {
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+}

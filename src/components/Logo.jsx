@@ -9,9 +9,9 @@ const Logo = () => {
   return (
     <>
       {isMobile ? (
-        <img src={logo1} alt="DayByDay" />
+        <img src={logo1} alt="DayByDay" style={{ margin: "0.5rem" }} />
       ) : (
-        <img src={logo} alt="DayByDay" />
+        <img src={logo} alt="DayByDay" style={{ margin: "1rem" }} />
       )}
     </>
   )

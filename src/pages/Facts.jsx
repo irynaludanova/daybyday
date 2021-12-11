@@ -14,6 +14,9 @@ const Container = styled.div`
 `
 const Quote = styled.div`
   margin: 3rem;
+  @media (max-width: 768px) {
+    margin: 1rem;
+  }
 `
 
 const Facts = () => {
