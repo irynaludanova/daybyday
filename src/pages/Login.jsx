@@ -35,7 +35,6 @@ const Container = styled.div`
 `
 const Wrapper = styled.div`
   margin: 1rem;
-  padding: 3rem;
   background: #85a5ff;
   box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
@@ -48,8 +47,7 @@ const Wrapper = styled.div`
     box-shadow: none;
     flex-direction: column;
     margin: 0;
-    padding: 0;
-  }
+
 `
 const Left = styled.div`
   flex: 1;

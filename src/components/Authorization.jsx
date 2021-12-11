@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-
+import ButtonLight from "../components/ButtonLight"
 const Auth = styled.div`
   display: flex;
 `
@@ -13,21 +13,11 @@ const Avatar = styled.img`
 
 const Item = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   font-size: 1.2rem;
   text-decoration: none;
   list-style: none;
   margin: 1rem;
-`
-const Button = styled.button`
-  font-size: 1.2rem;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.75);
 `
 const Authorization = ({ user }) => {
   const logout = () => {
@@ -40,13 +30,16 @@ const Authorization = ({ user }) => {
           <Item>
             <Avatar src={user.photos[0].value} alt="avatar" />
             {user.displayName}
-            <Button onClick={logout}>Выход</Button>
+            <ButtonLight>
+              <Link to="/userpage">Мой день</Link>
+            </ButtonLight>
+            <ButtonLight onClick={logout}>Выход</ButtonLight>
           </Item>
         </Auth>
       ) : (
-        <Button>
+        <ButtonLight>
           <Link to="login">Вход</Link>
-        </Button>
+        </ButtonLight>
       )}
     </>
   )

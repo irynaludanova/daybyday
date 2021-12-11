@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     transition: all 0.50s linear;
     text-align:center;
     overflow-x: hidden;
-  padding: 2rem;
+  padding: 1rem;
   }
 
 header{
@@ -47,6 +47,4 @@ a {
   text-decoration:none;
   color:black
 }
-
-
   `

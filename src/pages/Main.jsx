@@ -7,7 +7,7 @@ import { Row, Col } from "antd"
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
+  padding-top: 0;
   @media (max-width: 768px) {
     padding-top: 1rem;
     flex-direction: column;
@@ -26,7 +26,7 @@ const Main = () => {
   return (
     <Row justify="center">
       <Container>
-        <Col span={12}>
+        <Col span={12} style={{ zIndex: "10" }}>
           <h1>Day By Day</h1>
           <h3>С нами не соскучишься &#128521;</h3>
           <h3>
@@ -45,7 +45,7 @@ const Main = () => {
             <a href="/menu">меню</a>
           </Button>
         </Col>
-        <Col span={12}>
+        <Col span={12} style={{ zIndex: "1" }}>
           <Img src={gif} alt="Snowman" />
         </Col>
       </Container>
