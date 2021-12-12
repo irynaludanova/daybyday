@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive"
 import Logo from "./Logo"
 import "./CustomHeader.css"
 import Back from "./Back"
-import Authorization from "./Authorization"
+import Logout from "./Logout"
 import Toggle from "./Toggler"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { AiOutlineClose } from "react-icons/ai"
@@ -35,7 +35,7 @@ const CustomHeader = ({ theme, themeToggler, user }) => {
             <nav role="navigation" className="sidebar">
               <ul className="menu">
                 <li>
-                  <Authorization user={user} />
+                  <Logout user={user} />
                 </li>
                 <li>
                   <Toggle theme={theme} toggleTheme={themeToggler} />
@@ -51,7 +51,7 @@ const CustomHeader = ({ theme, themeToggler, user }) => {
             <Back />
           </div>
           <div className="wrapper">
-            <Authorization user={user} />
+            <Logout user={user} />
             <Toggle theme={theme} toggleTheme={themeToggler} />
           </div>
         </header>

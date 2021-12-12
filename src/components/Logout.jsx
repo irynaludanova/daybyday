@@ -19,7 +19,7 @@ const Item = styled.div`
   list-style: none;
   margin: 1rem;
 `
-const Authorization = ({ user }) => {
+const Logout = ({ user }) => {
   const logout = () => {
     window.open("http://localhost:5000/auth/logout", "_self")
   }
@@ -45,4 +45,4 @@ const Authorization = ({ user }) => {
   )
 }
 
-export default Authorization
+export default Logout

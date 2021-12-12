@@ -8,15 +8,22 @@ import { lightTheme, darkTheme } from "./components/Themes"
 import Main from "./pages/Main"
 import Menu from "./components/Menu"
 import { Content, Footer } from "antd/lib/layout/layout"
-import { routes } from "./store/routes"
+import { pageRoutes } from "./store/routes"
 import Login from "./pages/Login"
 import UserPage from "./pages/UserPage"
-import { useAuth } from "./hooks/useAuth"
+import { useSocialAuth } from "./hooks/useSocialAuth"
 import CustomHeader from "./components/CustomHeader"
-
+import PasswordLogin from "./components/PasswordLogin"
+import { useRoutes } from "./route"
+import { useAuth } from "./hooks/useAuth"
+import { AuthContext } from "./context/AuthContext"
 const App = () => {
+  const { token, login, logout, userId } = useAuth()
+  const isAuthenticated = !!token
+  const routes = useRoutes(isAuthenticated)
+
+  const [user] = useSocialAuth()
   const [theme, themeToggler] = useDarkMode()
-  const [user, setUser] = useAuth()
   const themeMode = theme === "light" ? lightTheme : darkTheme
   return (
     <ThemeProvider theme={themeMode}>
@@ -32,10 +39,15 @@ const App = () => {
               element={user ? <Navigate to="/" /> : <Login />}
             />
             <Route
+              path="/signup"
+              element={user ? <Navigate to="/userpage" /> : <PasswordLogin />}
+            />
+
+            <Route
               path="/userpage"
               element={user ? <UserPage /> : <Navigate to="/login" />}
             />
-            {routes.map(({ index, path, element, exact }) => {
+            {pageRoutes.map(({ index, path, element, exact }) => {
               return (
                 <Route
                   key={index}

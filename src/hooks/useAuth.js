@@ -1,31 +1,32 @@
-import { useState, useEffect } from "react"
+import { useState, useCallback, useEffect } from "react"
+const storageName = "userData"
 
 export const useAuth = () => {
+  const [token, setToken] = useState(null)
+  const [userId, setUserId] = useState(null)
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    const getUser = () => {
-      fetch("http://localhost:5000/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json()
-          throw new Error("authentication has been failed!")
-        })
-        .then((resObject) => {
-          setUser(resObject.user)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-    getUser()
+  const login = useCallback((jwtToken, id) => {
+    setToken(jwtToken)
+    setUserId(id)
+    localStorage.setItem(
+      storageName,
+      JSON.stringify({ userId: id, token: jwtToken })
+    )
   }, [])
-  return [user, setUser]
+
+  const logout = useCallback(() => {
+    setToken(null)
+    setUserId(null)
+    localStorage.removeItem(storageName)
+  }, [])
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem(storageName))
+    if (data && data.token) {
+      login(data.token, data.userId)
+    }
+  }, [login])
+
+  return [login, logout, token, userId, user, setUser]
 }

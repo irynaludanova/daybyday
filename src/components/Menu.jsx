@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { routes } from "../store/routes"
+import { pageRoutes } from "../store/routes"
 import { Row, Col } from "antd"
 import Button from "./Button"
 import "./Menu.css"
@@ -8,7 +8,7 @@ import "./Menu.css"
 const Menu = () => {
   return (
     <Row className="folder">
-      {routes.map(({ index, component, path, image, desc, label }) => {
+      {pageRoutes.map(({ index, component, path, image, desc, label }) => {
         return (
           <Col xs={24} sm={24} md={8} lg={6} xl={6} key={index}>
             <div className="maincontainer" key={index}>

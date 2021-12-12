@@ -11,7 +11,7 @@ import Quiz from "../pages/Quiz"
 import ImageInput from "../pages/ImageInput"
 import Motivation from "../pages/Motivation"
 
-export const routes = [
+export const pageRoutes = [
   {
     id: 1,
     path: "/calendar",
