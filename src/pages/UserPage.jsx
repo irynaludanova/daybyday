@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useLocation } from "react-router"
 import TodoForm from "../components/TodoForm"
 import TodoList from "../components/TodoList"
+import { useTodoState } from "../hooks/useTodoState"
 import styled from "styled-components"
-import axios from "axios"
 
 const Todo = styled.div`
   width: 50%;
@@ -18,23 +18,25 @@ const Todo = styled.div`
   }
 `
 
-const UserPage = () => {
-  const [todoList, setTodoList] = useState([])
-  useEffect(() => {
-    axios
-      .get("/todos", { headers: { token: localStorage.getItem("token") } })
-      .then((res) => {
-        if (res.status === 200) {
-          setTodoList(res.data.todos)
-        }
-      })
-  }, [])
+const UserPage = ({ saveTodo }) => {
+  const location = useLocation()
+  const path = location.pathname.split("/")[2]
+
+  const { todos, addTodo, deleteTodo } = useTodoState([])
 
   return (
     <Todo>
       <h1>Это важно сегодня:</h1>
-      <TodoList todos={todoList} setTodos={setTodoList} />
-      <TodoForm todos={todoList} setTodos={setTodoList} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <TodoForm
+        saveTodo={(todoText) => {
+          const trimmedText = todoText.trim()
+
+          if (trimmedText.length > 0) {
+            addTodo(trimmedText)
+          }
+        }}
+      />
     </Todo>
   )
 }
