@@ -18,7 +18,7 @@ const PasswordLogin = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const { loading, request } = useHttp()
-  const [login, logout, token, userId] = useAuth()
+  const [token, userId] = useAuth()
   const resetForm = () => {
     setEmail("")
     setPassword("")

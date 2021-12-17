@@ -13,15 +13,9 @@ import Login from "./pages/Login"
 import UserPage from "./pages/UserPage"
 import { useSocialAuth } from "./hooks/useSocialAuth"
 import CustomHeader from "./components/CustomHeader"
-import PasswordLogin from "./components/PasswordLogin"
-import { useRoutes } from "./route"
 import { useAuth } from "./hooks/useAuth"
-import { AuthContext } from "./context/AuthContext"
 const App = () => {
-  const { token, login, logout, userId } = useAuth()
-  const isAuthenticated = !!token
-  const routes = useRoutes(isAuthenticated)
-
+  const [token] = useAuth()
   const [user] = useSocialAuth()
   const [theme, themeToggler] = useDarkMode()
   const themeMode = theme === "light" ? lightTheme : darkTheme
@@ -29,23 +23,22 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles />
       <Layout>
-        <CustomHeader theme={theme} themeToggler={themeToggler} user={user} />
+        <CustomHeader
+          theme={theme}
+          themeToggler={themeToggler}
+          user={user}
+          token={token}
+        />
+        {console.log("User:", user, "Token:", token)}
         <Content>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/menu" element={<Menu />} />
-            <Route
-              path="/login"
-              element={user ? <Navigate to="/" /> : <Login />}
-            />
-            <Route
-              path="/signup"
-              element={user ? <Navigate to="/userpage" /> : <PasswordLogin />}
-            />
+            <Route path="/login" element={<Login />} />
 
             <Route
               path="/userpage"
-              element={user ? <UserPage /> : <Navigate to="/login" />}
+              element={user || token ? <UserPage /> : <Navigate to="/login" />}
             />
             {pageRoutes.map(({ index, path, element, exact }) => {
               return (

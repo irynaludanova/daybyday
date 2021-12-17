@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2ed11301.chunk.css",
+    "main.js": "/static/js/main.80ff095d.chunk.js",
+    "main.js.map": "/static/js/main.80ff095d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.99118f7f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.99118f7f.js.map",
+    "static/js/2.2ccaf683.chunk.js": "/static/js/2.2ccaf683.chunk.js",
+    "static/js/2.2ccaf683.chunk.js.map": "/static/js/2.2ccaf683.chunk.js.map",
+    "static/js/3.2d5a857d.chunk.js": "/static/js/3.2d5a857d.chunk.js",
+    "static/js/3.2d5a857d.chunk.js.map": "/static/js/3.2d5a857d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2ed11301.chunk.css.map": "/static/css/main.2ed11301.chunk.css.map",
+    "static/js/2.2ccaf683.chunk.js.LICENSE.txt": "/static/js/2.2ccaf683.chunk.js.LICENSE.txt",
+    "static/media/back_arrow.21922dde.webp": "/static/media/back_arrow.21922dde.webp",
+    "static/media/calendar.a0ba55bf.webp": "/static/media/calendar.a0ba55bf.webp",
+    "static/media/clever.753dd43e.webp": "/static/media/clever.753dd43e.webp",
+    "static/media/download.2d650aa9.webp": "/static/media/download.2d650aa9.webp",
+    "static/media/fact.8710acc0.webp": "/static/media/fact.8710acc0.webp",
+    "static/media/glasses.5c372ded.webp": "/static/media/glasses.5c372ded.webp",
+    "static/media/joke.1f72c390.webp": "/static/media/joke.1f72c390.webp",
+    "static/media/logo.20d3b406.webp": "/static/media/logo.20d3b406.webp",
+    "static/media/logo1.3e53e8f7.webp": "/static/media/logo1.3e53e8f7.webp",
+    "static/media/motivate.0649ed08.webp": "/static/media/motivate.0649ed08.webp",
+    "static/media/snowman.c03138ea.gif": "/static/media/snowman.c03138ea.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.99118f7f.js",
+    "static/js/2.2ccaf683.chunk.js",
+    "static/css/main.2ed11301.chunk.css",
+    "static/js/main.80ff095d.chunk.js"
+  ]
+}
