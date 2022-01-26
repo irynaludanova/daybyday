@@ -25,5 +25,5 @@ export const useSocialAuth = () => {
     }
     getUser()
   }, [])
-  return [user]
+  return []
 }
